@@ -1,8 +1,26 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+:root,
+:root.theme-dark {
+  --background: #0f0f0f;
+  --foreground: #fafafa;
+  --card: #18181b;
+  --card-border: #27272a;
+  --muted: #71717a;
+  --accent: #22c55e;
+  --accent-hover: #16a34a;
+  --accent-soft: rgba(34, 197, 94, 0.2);
+  --accent-ring: rgba(34, 197, 94, 0.4);
+  --accent-red: #ef4444;
+  --accent-amber: #f59e0b;
+}
+
+:root.theme-light {
+  --background: #f4f4f5;
+  --foreground: #18181b;
+  --card: #ffffff;
+  --card-border: #d4d4d8;
+  --muted: #52525b;
 }
 
 @theme inline {
@@ -12,15 +30,53 @@
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans), system-ui, sans-serif;
+}
+
+input, select, textarea {
+  background: var(--card);
+  border: 1px solid var(--card-border);
+  color: var(--foreground);
+}
+
+input:focus, select:focus, textarea:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 2px var(--accent-ring);
+}
+
+button:not(:disabled),
+select:not(:disabled) {
+  cursor: pointer;
+}
+
+/* Basic light-theme remapping for existing zinc utility usage. */
+:root.theme-light .bg-zinc-950,
+:root.theme-light .bg-zinc-900,
+:root.theme-light .bg-zinc-900\/80,
+:root.theme-light .bg-zinc-900\/50,
+:root.theme-light .bg-zinc-800,
+:root.theme-light .bg-zinc-800\/50,
+:root.theme-light .bg-zinc-800\/30 {
+  background-color: var(--card) !important;
+}
+
+:root.theme-light .border-zinc-900,
+:root.theme-light .border-zinc-800,
+:root.theme-light .border-zinc-700 {
+  border-color: var(--card-border) !important;
+}
+
+:root.theme-light .text-zinc-100,
+:root.theme-light .text-zinc-200,
+:root.theme-light .text-zinc-300 {
+  color: #27272a !important;
+}
+
+:root.theme-light .text-zinc-400,
+:root.theme-light .text-zinc-500 {
+  color: #52525b !important;
 }

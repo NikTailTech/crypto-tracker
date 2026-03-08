@@ -1,0 +1,10 @@
+{
+  "default_currency": "CHF",
+  "cost_basis_method": "fifo",
+  "wallets": [
+    "Binance"
+  ],
+  "exchanges": [],
+  "theme": "dark",
+  "platform_color": "orange"
+}
